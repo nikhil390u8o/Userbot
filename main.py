@@ -6,7 +6,7 @@ import nest_asyncio, asyncio, random
 
 nest_asyncio.apply()
 
-BOT_TOKEN = "8249059463:AAG0JKaGAKJ8hwNPDGWorHArXoWazJAXg5s"
+BOT_TOKEN = "8249059463:AAGzjfe9z1W3ZoBGg5-k1P9FH4Ke_bHxeLg"
 API_ID = 20898349
 API_HASH = "9fdb830d1e435b785f536247f49e7d87"
 OWNER_ID = 7450385463  # your Telegram user ID
