@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
@@ -6,10 +9,9 @@ import nest_asyncio, asyncio, random
 
 nest_asyncio.apply()
 
-BOT_TOKEN = "8249059463:AAGzjfe9z1W3ZoBGg5-k1P9FH4Ke_bHxeLg"
-API_ID = 20898349
-API_HASH = "9fdb830d1e435b785f536247f49e7d87"
-OWNER_ID = 7450385463  # your Telegram user ID
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+API_ID = int(os.getenv("API_ID"))
+API_HASH = os.getenv("API_HASH")
 
 GIRL_IMAGE = "https://files.catbox.moe/p15mt6.jpg"
 WELCOME_IMAGE = "https://files.catbox.moe/5cgi22.jpg"
@@ -268,11 +270,15 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # --- Main runner ---
 def main():
-    app = Application.builder().token(BOT_TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, receive_string))
-    app.add_handler(CallbackQueryHandler(button_handler))
-    app.run_polling()
+    updater = Updater(BOT_TOKEN, use_context=True)
+    dp = updater.dispatcher
+
+    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, receive_string))
+    dp.add_handler(CallbackQueryHandler(button_handler))
+
+    updater.start_polling()
+    updater.idle()
 
 if __name__ == "__main__":
     main()
