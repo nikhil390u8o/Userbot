@@ -2,3 +2,4 @@ telethon==1.36.0
 python-telegram-bot==20.8
 nest_asyncio
 pyTelegramBotAPI
+gunicorn
