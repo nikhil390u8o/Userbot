@@ -10,15 +10,11 @@ import nest_asyncio, asyncio, random
 
 nest_asyncio.apply()
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
-
-GIRL_IMAGE = "https://files.catbox.moe/p15mt6.jpg"
-WELCOME_IMAGE = "https://files.catbox.moe/5cgi22.jpg"
-SUPPORT_CHANNEL = "https://t.me/YourSupportChannel"
-SUPPORT_GROUP = "https://t.me/YourSupportGroup"
-
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+WELCOME_IMAGE_URL = os.getenv("WELCOME_IMAGE_URL")
+GIRL_IMAGE = os.getenv("GIRL_IMAGE_URL")
 userbots = {}
 waiting_for_string = set()
 
