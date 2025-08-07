@@ -3,3 +3,4 @@ python-telegram-bot==13.15
 nest_asyncio
 pyTelegramBotAPI
 gunicorn
+python-dotenv
