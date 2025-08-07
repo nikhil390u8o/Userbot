@@ -1,4 +1,5 @@
 import os
+import imghdr
 from dotenv import load_dotenv
 load_dotenv()
 from telethon import TelegramClient, events
