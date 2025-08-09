@@ -238,26 +238,32 @@ async def start_web_server():
 
 
 async def run_application():
-    
+    #  web server--------
     await start_web_server()
     
-    
-    app = Application.builder().token(BOT_TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, receive_string))
-    app.add_handler(CallbackQueryHandler(button_handler))
-    print("🤖 Starting Telegram bot...")
-    
-    await app.initialize()
-    await app.start()
-    await app.updater.start_polling()
-    
-    
-    while True:
-        await asyncio.sleep(3600)  
-
-async def main():
-    await run_application()
-
-if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        print(f"Initializing bot with token: {BOT_TOKEN}")
+        app = Application.builder().token(BOT_TOKEN).build()
+        
+        
+        app.add_handler(CommandHandler("start", start))
+        app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, receive_string))
+        app.add_handler(CallbackQueryHandler(button_handler))
+        
+        print("🤖 Starting Telegram bot...")
+        await app.initialize()
+        await app.start()
+        
+        
+        if app.updater:
+            await app.updater.start_polling()
+        else:
+            print("Warning: No updater found in application")
+        
+        # run lul
+        while True:
+            await asyncio.sleep(3600)
+            
+    except Exception as e:
+        print(f"Fatal error in application: {e}")
+        raise
