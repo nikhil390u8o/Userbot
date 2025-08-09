@@ -28,7 +28,7 @@ load_dotenv()
 # --- Config / env vars ---
 API_ID = int(os.getenv("API_ID", "22861621"))
 API_HASH = os.getenv("API_HASH", "62e0bd042c2c81416242587e0083da0e")
-BOT_TOKEN = os.getenv("BOT_TOKEN", "")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "8249059463:AAFpuRQWCVCMW6kvAm0Mm48pv4e6Gza37J0")
 WELCOME_IMAGE = os.getenv("WELCOME_IMAGE_URL", "") or None
 GIRL_IMAGE = os.getenv("GIRL_IMAGE_URL", "") or None
 try:
